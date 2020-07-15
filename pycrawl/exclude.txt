@@ -29,12 +29,16 @@
 # CMS, Tracking, CDN Subdomains
 shop.
 analytics.
+tinyurl.com
 donate.
 static.
+youtu\.be
 advertising.
 download.
+sourceforge.net
 cdn2.
 img.
+grocy\.info
 api.
 stackoverflow.
 cdn.
@@ -53,16 +57,22 @@ doubleclick.net
 # General Websites that you get from Google
 stackexchange.
 youtube.com
-youtu.be
 twitter.com
 hotel.com
 privacy-policy
 vogue.com
 adobe.com
+yandex.ru
 /enterprise.
+wp-content/
 soundcloud.com
 cloudfront.net
 mailchimp.com
+amazon.com
+disqus.com
+forbes.com
+amazon.fr
+amazon.de
 tripadvisor.
 mailchimp.app
 gaana.com
@@ -109,8 +119,8 @@ wikipedia.org
 librepay.com
 artnews.com
 rollingstone.com
-t.co
 paypal.com
+paypal.me
 patreon.com
 paypalobjects.com
 tumblr.com
@@ -406,3 +416,11 @@ techcommunity.microsoft.com
 www.lifewire.com
 social.technet.microsoft.com
 thetechhacker.com
+freedesktop.org
+gnome.org
+oracle.com
+metacpan.org
+w3.org
+vice.com
+aol.com
+stripe.com

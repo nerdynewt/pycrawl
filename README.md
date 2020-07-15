@@ -4,15 +4,58 @@ _A simple (and highly opinionated) web-crawler/search-engine written in Python_
 
 ## Installation and Usage
 
-Clone and `cd`:
-```bash
-git clone "https://github.com/nerdynewt/crawler" && cd crawler
+### Setting up MySQL
+
+- [Install MySQL](https://dev.mysql.com/doc/mysql-installation-excerpt/5.7/en/) for your distribution/OS
+- Make sure it is installed: `mysql --version`
+- Enable/start the MySQL Server. Usually `systemctl start mariadb` or `systemctl start mysql`
+- Log in to MySQL as root: `sudo mysql -u root -p`. Press enter when prompted for password
+- Make a new user, create a database, and give the new user rights to the database. **Important:** Use the _exact_ same credentials. Copy-paste.
+```mysql
+CREATE USER 'pycrawl'@'localhost' IDENTIFIED BY 'PaSSwoRd';
+CREATE DATABASE search_index;
+GRANT ALL PRIVILEGES ON search_index.* TO 'pycrawl'@'localhost';
+FLUSH PRIVILEGES;
+quit
+```
+- Now login as the new user: `mysql -u pycrawl -p`. Type in `PaSSwoRd` when prompted for password.
+- Create a table in the new database to add indexed results:
+```mysql
+USE search_index;
+CREATE TABLE search_index (url VARCHAR(255), title VARCHAR(255), content LONGTEXT);
 ```
 
-Run `crawler.py`, giving it _one_ start website:
+### Using the Crawler
+
+
+Clone and `cd`:
 ```bash
-python crawler.py "https://www.splitbrain.org/"
+git clone "https://github.com/nerdynewt/crawler" && cd crawler/pycrawl
 ```
+
+Put the urls you need to crawl in `todo.txt`. ex:
+```bash
+echo "https://www.splitbrain.org" >> todo.txt
+```
+
+Run the crawler script:
+
+```bash
+python newmain.py
+```
+
+### Using the web frontend
+
+- Install `php`
+- [Set up](https://wiki.archlinux.org/index.php/PHP#MySQL/MariaDB) `php` to be used with MySQL
+- From the project root folder, start a development `php` server: `php -S 0.0.0.0:8000`
+
+Now, if your query is _Richard Stallman_, navigate to:
+
+<http://localhost:8000/query.php?q=richard%20stallman>
+
+Yeah, I'm lazy.
+
 
 ## Philosophy
 
@@ -55,7 +98,8 @@ Although this is a Sunday-evening hackjob, there are a couple other projects tha
 
 ## Todo
 
-- [ ] An actual database for indexed results, and LAMP framework
-- [ ] KeyboardInterrupt Doesn't work? Have to `killall python`, lol
+- [X] An actual database for indexed results, and LAMP framework
+- [X] KeyboardInterrupt Doesn't work? Have to `killall python`, lol
 - [ ] Command-line arguments, more configuration options
 - [ ] API for remote querying of indexed results
+- [ ] A good web frontend with nice HTML and CSS
