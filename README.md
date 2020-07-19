@@ -2,6 +2,9 @@
 
 _A simple (and highly opinionated) web-crawler/search-engine written in Python_
 
+
+![Screenshot](screenshot.png)
+
 ## Installation and Usage
 
 ### Setting up MySQL
